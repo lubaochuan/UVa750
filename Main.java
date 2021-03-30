@@ -5,17 +5,19 @@ import java.util.Arrays;
 
 class Main {
   public static void main(String[] args) throws FileNotFoundException{
-    //Scanner scan = new Scanner(new File("input2.txt"));
-    Scanner scan = new Scanner(System.in);
+    Scanner scan = new Scanner(new File("input2.txt"));
+    //Scanner scan = new Scanner(System.in);
     int cases = scan.nextInt();
     for(int i=0; i<cases; i++){
       int row_first = scan.nextInt(); // postion of the first queen
       int col_first = scan.nextInt();
       int sol_num = 1;
       int[] solution = new int[9]; // 1 based index
-      System.out.println("SOLN      COLUMN");
-      System.out.println(" #     1 2 3 4 5 6 7 8\n");
-      solution[0] = 1; // solution index, update in place_queen
+      System.out.println("SOLN       COLUMN");
+      //                  SOLN       COLUMN
+      System.out.println(" #      1 2 3 4 5 6 7 8\n");
+      //                   #      1 2 3 4 5 6 7 8\n\n
+      solution[0] = 1; // solution index, update in place_queen()
       // place the queens starting from the first column
       // recursively: place_queen() calls place_queen
       place_queen(solution, 1, row_first, col_first);
