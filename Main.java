@@ -5,8 +5,8 @@ import java.util.Arrays;
 
 class Main {
   public static void main(String[] args) throws FileNotFoundException{
-    Scanner scan = new Scanner(new File("input2.txt"));
-    //Scanner scan = new Scanner(System.in);
+    //Scanner scan = new Scanner(new File("input2.txt"));
+    Scanner scan = new Scanner(System.in);
     int cases = scan.nextInt();
     for(int i=0; i<cases; i++){
       int row_first = scan.nextInt(); // postion of the first queen
@@ -22,7 +22,9 @@ class Main {
       // recursively: place_queen() calls place_queen
       place_queen(solution, 1, row_first, col_first);
 
-      System.out.println();
+      if(i != cases-1){
+        System.out.println();
+      }
     }
   }
 
