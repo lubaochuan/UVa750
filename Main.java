@@ -13,6 +13,7 @@ class Main {
       int col_first = scan.nextInt();
       int sol_num = 1;
       int[] solution = new int[9]; // 1 based index
+      //System.out.println(Arrays.toString(solution));
       System.out.println("SOLN       COLUMN");
       //                  SOLN       COLUMN
       System.out.println(" #      1 2 3 4 5 6 7 8\n");
@@ -38,25 +39,30 @@ class Main {
           for(int i=1; i<=8; i++){
             sb.append(" "+solution[i]);
           }
-          System.out.println(" "+solution[0]+"    "+sb);
+          System.out.printf("%2d     %s", solution[0], sb);
+          System.out.println();
           solution[0]++;
         }else{
           place_queen(solution, col+1, row_first, col_first);
         }
-      }   
+      }  
     }
   }
 
   static boolean conflict(int[] solution, int end_index, int row_first, int col_first){
     boolean result = false;
+    if(end_index==col_first && solution[end_index]!=row_first){     // overlap first queen
+      return true;
+    }
+      
     for(int col=1; col<end_index; col++){
-      if((col==col_first && solution[col]!=row_first) // overlap first queen
-       || solution[col]==solution[end_index] // two queens in same row
+      if(solution[col]==solution[end_index] // two queens in same row
        || Math.abs(col-end_index)==Math.abs(solution[col]-solution[end_index])){ // new queen on a diagonal with a previous queue
         result = true;
         break;
       }
     }
+    
     return result;
   }
 }
